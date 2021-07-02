@@ -1,0 +1,61 @@
+ALGORITHM algo1
+
+VAR 
+Nmax:INTEGER:=100
+sentence:STRING[Nmax]:='';
+carac:CHAR;
+nb_caractere :INTEGER:=0;
+nb_mot :INTEGER:=0;
+nb_voyelle:INTEGER:=0;
+
+/*compteurs*/
+
+i:INTEGER:=0;
+j:INTEGER:=0;
+k:INTEGER:=0;
+
+BEGIN
+/*entrer la phrase*/
+
+DO{
+    read(carac);
+    sentence:= sentence+carac;
+} 
+WHILE (carac='.')
+END_WHILE
+
+/*calcul nombre de caractere*/
+
+WHILE(sentence[i]<>'.') DO
+   nb_caractere:= nb_caractere+1;
+   i:=i+1;
+END_WHILE
+
+/*calcul de mots*/
+
+WHILE(sentence[j]<>'.') DO
+   IF(sentence[j]=' ') THEN
+   nb_mot:= nb_mot+1;
+   END_IF 
+   j:=j+1;
+
+END_WHILE
+
+/*calcul voyelle*/
+
+WHILE(sentence[k]<>'.') DO
+   IF(sentence[k] in ['a','e','i','u','o','y'] ) THEN
+   nb_voyelle:= nb_voyelle + 1;
+   END_IF  
+    k:=k+1;
+END_WHILE
+ 
+/*affichage de resultat*/
+write('le nombre de carcteres est ') ;
+write(nb_caractere);
+write('le nombre de mots est ');
+write(nb_mot+1);
+write('le nombre de voyelles est ');
+write(nb_voyelle);
+
+END
